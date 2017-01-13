@@ -10,14 +10,8 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Events <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Discussion</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Job Board</a>
+          <li repeat.for="route of router.navigation" class="nav-item ${route.isActive ? 'active' : ''}">
+            <a class="nav-link" href.bind="route.href">${route.title}</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
