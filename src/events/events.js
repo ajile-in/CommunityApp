@@ -1,9 +1,12 @@
+import {inject} from 'aurelia-framework';
+import {DataRepository} from 'services/dataRepository';
 
+@inject(DataRepository)
 export class Events {
-	constructor() {
-		this.events =  [
-			{id: 1, title: "Aurelia Fundamentals"},
-			{id:2, title: "Data-Centric SPAs with BreezeJS" }
-		];
+	constructor(dataRepository) {
+		dataRepository.getEvents()
+			.then(events => {
+				this.events = events;
+			});
 	}
 }
